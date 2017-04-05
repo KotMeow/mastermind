@@ -1,0 +1,15 @@
+{
+  "name": "mastermind",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-session": "^2.0.0-beta.1",
+    "express": "^4.15.2",
+    "errorhandler": "^1.5.0",
+    "morgan": "^1.8.1"
+  }
+}
