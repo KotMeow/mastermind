@@ -19,7 +19,7 @@ exports.play = function (req, res) {
             "size": req.params[2],
             "dim": req.params[4],
             "max": req.params[6],
-            "puzzle": req.session.puzzle.data
+            "puzzle": req.session.puzzle
         };
     };
     // poniższa linijka jest zbędna (przy założeniu, że
@@ -27,12 +27,15 @@ exports.play = function (req, res) {
     // rozwiązaniu można ją usunąć.
     req.session.puzzle = req.session.puzzle || req.app.get('puzzle');
 
-//      req.params[2] === wartość size
-//      req.params[4] === wartość dim
-//      req.params[6] === wartość max
 
     if (req.params[2]) {
         req.session.puzzle.size = req.params[2];
+    }
+    if (req.params[4]) {
+        req.session.puzzle.dim = req.params[4];
+    }
+    if (req.params[6]) {
+        req.session.puzzle.max = req.params[6];
     }
     res.json(newGame());
 };
