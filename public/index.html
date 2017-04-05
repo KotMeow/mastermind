@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Mastermind</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
     <link rel='stylesheet' href='/css/style.css' />
     <script src='/js/jquery-3.2.0.min.js'></script>
     <script src='/js/skrypt.js'></script>
-  </head>
-  <body>
-    <p>
-    Interfejs użytkownika
-    </p>
-  </body>
+</head>
+
+<body>
+    <div class="container">
+        <p class="title is-1">Hello!</p>
+        <div class="columns">
+        <div class="column is-4">
+        <div class="field">
+            <label class="label">Length of code</label>
+            <p class="control">
+                <input class="input" type="number" id="lengthOfCode"> </p>
+        </div>
+               </div>
+               <div class="column is-4">
+                <div class="field">
+            <label class="label">Number of colors</label>
+            <p class="control">
+                <input class="input" type="text" placeholder="Text input" id="numberOfColors"> </p>
+        </div> 
+            </div>
+            <div class="column is-4">
+        <div class="field">
+            <label class="label">Maximum numbers of moves</label>
+            <p class="control">
+                <input class="input" type="number" id="numberOfMoves"> </p>
+        </div>
+            </div>
+        </div>
+        <a class="button is-primary" id="startGame">Play!</a> 
+        </div>
+</body>
+
 </html>

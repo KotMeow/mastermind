@@ -13,8 +13,6 @@ var port = process.env.PORT || 3000;
 var env = process.env.NODE_ENV || 'development';
 var secret = process.env.SECRET || '$uper $ecret';
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
 app.set('puzzle', {
     data: [], // układ liczb-kolorów do zganięcia
     size: 5,  // liczba wykorzystywanych „kolumn”
