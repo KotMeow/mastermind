@@ -1,4 +1,6 @@
-/*jshint node: true */
+/*jshint node: true, esversion: 6 */
+'use strict';
+
 exports.index = function (req, res) {
     req.session.puzzle = req.session.puzzle || req.app.get('puzzle');
     res.render('index', {
@@ -25,7 +27,7 @@ exports.play = function (req, res) {
     // poniższa linijka jest zbędna (przy założeniu, że
     // play zawsze używany będzie po index) – w końcowym
     // rozwiązaniu można ją usunąć.
-    req.session.puzzle = req.session.puzzle || req.app.get('puzzle');
+    //req.session.puzzle = req.session.puzzle || req.app.get('puzzle');
 
 
     if (req.params[2]) {
@@ -42,12 +44,26 @@ exports.play = function (req, res) {
 
 exports.mark = function (req, res) {
     var markAnswer = function () {
-        var move = req.params[0].split('/');
+        var move = req.params[0].split('/').map(Number);
         move = move.slice(0, move.length - 1);
-        console.log(move);
+        var tempPuzzle = req.session.puzzle.data;
+        var result = {
+            biale: 0,
+            czarne: 0
+        };
+
+        for (let i in move) {
+            if (move[i] === tempPuzzle[i]) {
+                result.czarne = result.czarne + 1;
+            } else if (req.session.puzzle.data.includes(move[i])) { 
+                result.biale = result.biale + 1;
+            }
+        }
+
         return {
-            "retVal": "tutaj – zamiast tego napisu – ocena",
-            "retMsg": "coś o ocenie – np „Brawo” albo „Buuu”"
+            "move": move,
+            "puzzle": req.session.puzzle,
+            "result": result
         };
     };
     res.json(markAnswer());

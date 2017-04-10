@@ -4,6 +4,7 @@
 <head>
     <title>Mastermind</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='/css/style.css' />
     <script src='/js/jquery-3.2.0.min.js'></script>
     <script src='/js/skrypt.js'></script>
@@ -12,31 +13,39 @@
 <body>
     <div class="container">
         <p class="title is-1">Hello!</p>
-        <div class="columns">
-        <div class="column is-4">
-        <div class="field">
-            <label class="label">Length of code</label>
-            <p class="control">
-                <input class="input" type="number" id="lengthOfCode"> </p>
-        </div>
-               </div>
-               <div class="column is-4">
+        <div class="columns start-game-form">
+            <div class="column is-4">
                 <div class="field">
-            <label class="label">Number of colors</label>
-            <p class="control">
-                <input class="input" type="text" placeholder="Text input" id="numberOfColors"> </p>
-        </div> 
+                    <label class="label">Length of code</label>
+                    <p class="control">
+                        <input class="input" type="number" id="lengthOfCode"> </p>
+                </div>
             </div>
             <div class="column is-4">
-        <div class="field">
-            <label class="label">Maximum numbers of moves</label>
-            <p class="control">
-                <input class="input" type="number" id="numberOfMoves"> </p>
-        </div>
+                <div class="field">
+                    <label class="label">Number of colors</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Text input" id="numberOfColors"> </p>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="field">
+                    <label class="label">Maximum numbers of moves</label>
+                    <p class="control">
+                        <input class="input" type="number" id="numberOfMoves"> </p>
+                </div>
             </div>
         </div>
-        <a class="button is-primary" id="startGame">Play!</a> 
+        <a class="button is-primary" id="startGame">Play!</a>
+        <div class="game-area" hidden>
+            <p class="title is-2 game-info"></p>
+            <div class="game-area-input">
+                <input class="input code-input" type="number" id="code1">
+            </div>
+            <a class="button is-primary" id="send">Send</a>
         </div>
+    </div>
+
 </body>
 
 </html>
