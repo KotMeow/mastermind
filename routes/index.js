@@ -49,7 +49,6 @@ exports.mark = function (req, res) {
             czarne: 0,
             wygrales: false
         };
-        console.log(tempPuzzle);
 
         for (let i in move) {
             if (move[i] === tempPuzzle[i]) {
@@ -62,7 +61,6 @@ exports.mark = function (req, res) {
         }
         if (req.session.puzzle.size == result.czarne) {
           result.wygrales = true;
-          console.log('Brawo');
         }
         return {
             "move": move,

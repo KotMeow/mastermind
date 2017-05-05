@@ -10,7 +10,7 @@ $(function () {
 
   var enter = function (e) {
     if (e.which == 13) sendButton.click();
-  }
+  };
   $('#startGame').on('click', function () {
     var numberOfMoves = $('#numberOfMoves').val() ? $('#numberOfMoves').val() : 5;
     var lengthOfCode = $('#lengthOfCode').val() ? $('#lengthOfCode').val() : 5;
@@ -27,9 +27,8 @@ $(function () {
   });
   sendButton.on('click', function () {
     var mark = $('#code' + moves).val().split('').join('/');
-    if (mark == '') return;
+    if (mark === '') return;
     $.get(`/mark/${mark}/`, function (data) {
-      console.log(data);
       var liczbaRuchow = Number(data.puzzle.max) - moves;
       var ruch = liczbaRuchow < 5 ? 'ruchy' : 'ruchów';
       if (liczbaRuchow == 1) ruch = 'ruch';
