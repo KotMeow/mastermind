@@ -19,7 +19,6 @@ app.set('puzzle', {
     dim: 9,   // liczba dostępnych kolorów
     max: null // maksymalna liczba prób (null – brak ograniczeń)
 });
-
 // obsługa danych typu application/json
 app.use(bodyParser.json());
 // obsługa danych typu application/x-www-form-urlencoded

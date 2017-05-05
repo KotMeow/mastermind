@@ -24,10 +24,7 @@ exports.play = function (req, res) {
             "puzzle": req.session.puzzle
         };
     };
-    // poniższa linijka jest zbędna (przy założeniu, że
-    // play zawsze używany będzie po index) – w końcowym
-    // rozwiązaniu można ją usunąć.
-    //req.session.puzzle = req.session.puzzle || req.app.get('puzzle');
+    req.session.puzzle = req.session.puzzle || req.app.get('puzzle');
 
 
     if (req.params[2]) {
@@ -43,23 +40,30 @@ exports.play = function (req, res) {
 };
 
 exports.mark = function (req, res) {
-    var markAnswer = function () {
-        var move = req.params[0].split('/').map(Number);
+    const markAnswer = function () {
+        let move = req.params[0].split('/').map(Number);
         move = move.slice(0, move.length - 1);
-        var tempPuzzle = req.session.puzzle.data;
+        var tempPuzzle = Array.from(req.session.puzzle.data);
         var result = {
             biale: 0,
-            czarne: 0
+            czarne: 0,
+            wygrales: false
         };
+        console.log(tempPuzzle);
 
         for (let i in move) {
             if (move[i] === tempPuzzle[i]) {
                 result.czarne = result.czarne + 1;
-            } else if (req.session.puzzle.data.includes(move[i])) { 
+                tempPuzzle[i] = null;
+            } else if (tempPuzzle.indexOf(move[i]) != -1) {
+                tempPuzzle[tempPuzzle.indexOf(move[i])] = null;
                 result.biale = result.biale + 1;
             }
         }
-
+        if (req.session.puzzle.size == result.czarne) {
+          result.wygrales = true;
+          console.log('Brawo');
+        }
         return {
             "move": move,
             "puzzle": req.session.puzzle,
